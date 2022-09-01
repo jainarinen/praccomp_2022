@@ -1,0 +1,38 @@
+    1  exit
+    2  bash Miniconda3-latest-Linux-x86_64.sh 
+    3  exit
+    4  command install 1acbc2e8277ddd54a5f724896c7edee112d068529588d944702966c867e7e9cc
+    5  wget 78f39f9bae971ec1ae7969f0516017f2413f17796670f7040725dd83fcff5689
+    6  cd
+    7  wget 78f39f9bae971ec1ae7969f0516017f2413f17796670f7040725dd83fcff5689
+    8  wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+    9  bash
+   10  exit
+   11  conda install mamba -c conda-forge
+   12  mamba
+   13  mamba install htop
+   14  mamba install htop -c conda-forge
+   15  htop
+   16  mkdir praccomp
+   17  cd praccomp/
+   18  git
+   19  clear
+   20  git clone https://github.com/jainarinen/praccomp_2022.git
+   21  ls
+   22  cd praccomp_2022
+   23  nano README.md
+   24  git add README.md
+   25  git status
+   26  git commit -m "Added README.md"
+   27  git config --global user.email "jainarinen@gmail.com"
+   28  git config --global user,name "jainarinen20"
+   29  git config --global user.name "jainarinen20"
+   30  git commit -m "added READ.me"
+   31  git push
+   32  jainarinen@gmail.com
+   33  gitpush
+   34  git push
+   35  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
+   36  git push
+   37  history
+   38  history > log.txt
