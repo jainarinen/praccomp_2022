@@ -42,7 +42,7 @@ Ordered
 ## IMAGES
 
 ![Brewer Lab Logo] type url
-![ECU Logo] (https://upload.wikimedia.org/wikipedia/en/thumb/c/c7/East_Carolina_Pirates_logo.svg/1200px-East_Carolina_Pirates_logo.svg.png)
+![ECU Logo](https://upload.wikimedia.org/wikipedia/en/thumb/c/c7/East_Carolina_Pirates_logo.svg/1200px-East_Carolina_Pirates_logo.svg.png)
 
 ## Links
 
@@ -50,5 +50,26 @@ https://brewerlab.net - automatic
 
 [Brewer Lab](https.//brewer.lab.net)
 
+##BACKSLASH ESCAPE
+
+\*Literal asterisk\*
+can use special characters as literal symbols with backslash
+
+## FENCED CODE BLOCKS
+
+Generic example:
+
+```
+echo "hello"
+```
+
+Python example:
+```python
+print("hello")
+```
+R example:
+```r
+x <- 4^2
+```
 
 
