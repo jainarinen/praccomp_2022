@@ -32,11 +32,23 @@ Ordered
 1. Item 1
 2. Item 2
 3. Item 3
-	*Item 3a
-	*Item 3b
+	* Item 3a
+	* Item 3b
 ## Bullet Points
 - Point 1
 - Point 2
 - Point 3
+
+## IMAGES
+
+![Brewer Lab Logo] type url
+![ECU Logo] (https://upload.wikimedia.org/wikipedia/en/thumb/c/c7/East_Carolina_Pirates_logo.svg/1200px-East_Carolina_Pirates_logo.svg.png)
+
+## Links
+
+https://brewerlab.net - automatic
+
+[Brewer Lab](https.//brewer.lab.net)
+
 
 
