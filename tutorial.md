@@ -73,8 +73,14 @@ x <- 4^2
 ```
 
 ##TASK LISTS
-- [] this is an incomplete item
+- [ ] this is an incomplete item
 - [x] This is a complete item
 - [x] @mentions, #refs, [link](), **formatting**, and <del>tags</del> supported
 - [x] list syntax required (and unordered or ordered list supported)
 
+##TABLES
+
+First Header | Second Header
+------------ | -------------
+Content cell 1 | Content cell 2
+Content column 1 | Content column 2_
