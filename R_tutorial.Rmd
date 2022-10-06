@@ -1,0 +1,515 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+# R Basic
+
+## Introduction
+
+### R as a calculator
+
+```{r}
+1 + 100
+```
+
+```{r}
+2^2
+```
+
+```{r}
+7/2
+```
+
+```{r}
+4-1
+```
+
+```{r}
+2*2
+```
+
+```{r}
+3+5*2
+```
+
+```{r}
+(3+5)*2
+```
+
+```{r}
+2e2
+```
+
+```{r}
+2/10000
+```
+
+```{r}
+sin(1)
+```
+
+```{r}
+log(1)
+```
+
+```{r}
+exp(0)
+```
+
+```{r}
+1 == 1
+```
+
+```{r}
+1 >= 1
+```
+
+```{r}
+1 < 1
+```
+
+```{r}
+1 != 2
+```
+
+```{r}
+x <- 10
+x
+```
+
+```{r}
+x + x
+```
+
+```{r}
+x - 5
+```
+
+```{r}
+x^2
+```
+
+```{r}
+y <- x + x
+y
+```
+
+### Vectorization
+
+```{r}
+1:5
+```
+
+```{r}
+2^(1:5)
+```
+
+```{r}
+v <- 1:5
+2^v
+```
+
+```{r}
+log10(v)
+```
+
+### Environment
+
+```{r}
+ls()
+```
+```{r}
+rm(v)
+ls()
+```
+
+## Package Management
+
+```{r}
+installed.packages()
+```
+
+```{r}
+#install.packages("vegan", dependencies = TRUE) #Already installed
+```
+
+```{r}
+library(vegan)
+```
+
+
+```{r}
+#remove.packages()
+```
+
+## Project Management
+
+1. Set up management structure (i.e., "data", "src", "results", "doc")
+2. Discuss avoiding redundancy of files
+3. Make sure to use version control (i.e., Git)
+
+## Getting Help
+
+```{r}
+?plot
+```
+
+```{r}
+help(plot)
+```
+
+```{r}
+?"<-"
+```
+
+```{r}
+vignette("FAQ-vegan")
+```
+
+```{r}
+citation("vegan")
+```
+
+## Data and their formats
+
+```{r}
+cats <- data.frame(coat = c("calico", "black", "tabby"),
+                   weight = c(2.1,5,3.2),
+                   likes_string = c(1,0,1))
+```
+
+```{r}
+cats
+```
+
+```{r}
+write.csv(cats, file = "~/GitHub/biol48006220_Fall2022/practcomp_2022/data/cats.csv")
+```
+
+```{r}
+cats$coat
+```
+
+```{r}
+cats$weight
+```
+
+```{r}
+cats$weight*10
+```
+
+```{r}
+log(cats$weight)
+```
+
+```{r}
+logweight <- log(cats$weight)
+cbind(cats, logweight)
+```
+
+```{r}
+cats <- cbind(cats, logweight)
+```
+
+```{r}
+paste("My cat is ", cats$coat, ", and it weighs ", cats$weight, " kg.", sep = "")
+```
+
+### Data Types
+
+```{r}
+typeof(cats$coat)
+```
+
+```{r}
+typeof(cats$weight)
+```
+
+```{r}
+typeof(cats$likes_string)
+```
+
+```{r}
+typeof(3.14159)
+```
+
+```{r}
+typeof(1i)
+```
+
+```{r}
+typeof(FALSE)
+```
+
+```{r}
+typeof(T)
+```
+
+```{r}
+typeof(cats)
+```
+
+```{r}
+class(cats)
+```
+
+```{r}
+file.show("./data/cats.csv")
+```
+
+```{r}
+cats$likes_string <- as.logical(cats$likes_string)
+typeof(cats$likes_string)
+```
+
+```{r}
+cats$likes_string
+```
+
+```{r}
+c("a", "b")
+```
+
+```{r}
+ab <- c("a", "b")
+ab
+```
+
+```{r}
+c(ab, "c")
+```
+
+```{r}
+c(ab, ab)
+```
+
+```{r}
+1:10
+```
+
+```{r}
+seq(10)
+```
+
+```{r}
+z <- seq(10)
+head(z, n=3)
+```
+
+```{r}
+length(z)
+```
+
+```{r}
+class(z)
+```
+
+```{r}
+typeof(z)
+```
+
+```{r}
+seq(0,100, by=5)
+```
+
+### Data Frames
+```{r}
+cats
+```
+
+```{r}
+str(cats$coat)
+```
+
+```{r}
+coats <- c("tabby", "tortoiseshell", "tortoiseshell", "black", "tabby")
+coats
+```
+
+```{r}
+str(coats)
+```
+
+```{r}
+factor(coats)
+```
+
+```{r}
+categories <- factor(coats)
+class(coats)
+class(categories)
+```
+
+```{r}
+str(categories)
+```
+
+### Lists
+
+```{r}
+list_example <- list(title="Numbers", numbers = 1:10, data=T)
+```
+
+```{r}
+list_example
+```
+
+```{r}
+another_list <- list(1, "a", TRUE, 1+1i)
+another_list
+```
+
+```{r}
+typeof(list_example)
+class(list_example)
+```
+
+```{r}
+typeof(cats)
+class(cats)
+```
+
+```{r}
+data.frame(list_example)
+```
+
+```{r}
+cats
+cats[,3]
+cats[3,]
+```
+
+```{r}
+cats[2:3, c(1,3)]
+```
+
+### Matrices
+
+
+```{r}
+matrix_example<- matrix(0,ncol=5, nrow=3)
+```
+```{r}
+matrix_example
+
+```
+
+
+```{r}
+class(matrix_example)
+```
+```{r}
+typeof(matrix_example)
+```
+```{r}
+str(matrix_example)
+```
+```{r}
+dim(matrix_example)
+ncol(matrix_example)
+nrow(matrix_example)
+```
+
+the dim() function will tell you info on the shape
+
+```{r}
+class(data.frame(matrix_example))
+```
+This will make it in to a df
+```{r}
+df_example<- data.frame(matrix_example)
+df_example
+```
+now it's saved as a df
+
+### Subsetting
+
+```{r}
+p <-c(2.3, 6.9,4.0,23,1)
+p
+```
+```{r}
+names(p)<- c('a','b','c','d','e')
+p
+```
+
+```{r}
+p[1]
+```
+```{r}
+p[2:4]
+```
+
+```{r}
+p[c(1,5)]
+```
+
+```{r}
+p[c(1,1,1,3,5,5)]
+```
+
+```{r}
+p[6]
+```
+out of range items will not crash your script
+```{r}
+p[-3]
+```
+the above code gives you everything besides 3
+
+```{r}
+p[-(2:4)]
+```
+
+above code is how you drop a range
+
+```{r}
+p[c('a','c')]
+```
+```{r}
+p[c(T,F,T,T,F)]
+```
+ T = give data point F= leave out data point
+ 
+```{r}
+p[names(p) !='c']
+```
+ 
+This leaves out p
+
+### Factors
+
+```{r}
+f <- factor(c('a','b','c','d','e'))
+f
+```
+```{r}
+f[f=='a']
+```
+
+Above code gives you f where it is equal to a. This can be useful in for loops
+
+```{r}
+f[1:3]
+```
+
+```{r}
+f[f %in% c('b','c')]
+```
+```{r}
+f[-3]
+```
+
+```{r}
+f2<- c('a','a','b','c','c')
+f2
+```
+```{r}
+f2[f2=='a']
+```
+
+```{r}
+f2[f2 %in% c('a','c')]
+```
+%in% means "search in here for this"
