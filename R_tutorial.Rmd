@@ -723,3 +723,177 @@ write.table(gapminder, file="data/gapminder_web.csv", sep=",")
 write.csv(africas, file="data/gapminder_web_africas.csv")
 ```
 
+
+```{r}
+install.packages(c("gridges","viridis", "hrbrthemes"), dependencies = T)
+```
+r graph gallery
+
+## Stats
+
+### Additional ways of importing the data
+
+```{r}
+rand<- c(12,54,98,65,38)
+```
+
+
+```{r}
+rand
+```
+```{r}
+```
+
+
+```{r}
+sum(rand)
+```
+```{r}
+length(rand)
+avg(rand)
+mean(rand)
+sort(rand)
+min(rand)
+max(rand)
+cumsum(rand)
+diff(rand)
+rand[2]
+rand*2
+```
+
+
+```{r}
+pedes <- scan()
+```
+
+^^can be used to copy and paste data into a df
+
+### Analyses
+
+#### Univariate Statistics
+1. Categorical data
+  a. Barplots
+```{r}
+beer <- c(3,4,1,1,3,4,3,1,3,2,1,2,1,2,1,1,1,4,3,1)
+```
+
+  
+```{r}
+barplot(table(beer), xlab="beer", ylab="Frequency") #counts
+```
+  
+```{r}
+barplot(table(beer)/length(beer), xlab)
+
+#unfinished
+```
+  
+```{r}
+pie(table(beer), main="beer preference")
+```
+  
+2.Numerical data
+  a. stem and leaf plots
+```{r}
+stem(pedes)
+```
+
+```{r}
+stripchart(pedes,method="stack")
+```
+
+3. Measures of Center
+  a. mean
+```{r}
+mean(pedes)
+```
+b. Median
+```{r}
+median(pedes)
+median(gapminder$country)
+```
+```{r}
+with(gapminder, median(lifeExp))
+```
+
+c.mode
+
+```{r}
+which(table(pedes)==max(table(pedes)))
+```
+
+d. variation
+  a.range
+  
+```{r}
+range(pedes)
+```
+b. variance
+```{r}
+var(pedes)
+```
+IqR
+```{r}
+IQR(pedes)
+```
+
+d. z scores
+```{r}
+scale(pedes)
+```
+
+what are z score- # of SD away from mean
+
+e. Summary
+```{r}
+Summary(pedes)
+```
+
+histogram
+```{r}
+hist(pedes)
+```
+
+5. Plotting
+a. histograms
+```{r}
+hist(pedes, breaks="scott")
+#scott creates a nice number of breaks
+
+hist(pedes, breaks="scott", prob=TRUE)
+#will plot probability
+
+hist(pedes, breaks="scott", prob=TRUE)
+lines(density(pedes))
+```
+
+box plots
+```{r}
+boxplot(pedes)
+
+summary(boxplot(pedes))
+#aka
+summary(pedes)
+```
+
+
+#### Bivariate and Multivariate Statistics
+
+1. plotting and regression
+
+```{r}
+spid.gen <- read.csv("data/spider_genitalia.csv", header = T )
+```
+
+```{r}
+boxplot(spid.gen$left.bulb ~ spid.gen$right.bulb)
+
+#better shown as scatterplot
+```
+
+```{r}
+boxplot(spid.gen$left.bulb ~ spid.gen$habitat)
+
+boxplot(spid.gen$left.bulb/spid.gen$carapace ~ spid.gen$habitat)
+```
+
