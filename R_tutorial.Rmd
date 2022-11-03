@@ -897,3 +897,65 @@ boxplot(spid.gen$left.bulb ~ spid.gen$habitat)
 boxplot(spid.gen$left.bulb/spid.gen$carapace ~ spid.gen$habitat)
 ```
 
+gen.reg function will give you correlation info
+
+```{r}
+plot(spid.gen$left.bulb ~ spid.gen$right.bulb)
+#abline(gen.reg)
+```
+d. Correlation Coefficients & Spearman Rank Correlation
+```{r}
+cor.gen <- with(spid.gen, cor(left.bulb,right.bulb))
+cor.gen
+cor.gen^2
+```
+
+cor is correlation, variance, and covariance in  a matrix fashion
+
+This is your R value, you then square the value for r2.
+
+```{r}
+spearman.cor.gen <- with(spid.gen, cor(left.bulb, right.bulb, method="spearman"))
+spearman.cor.gen
+```
+e. Residuals
+
+```{r}
+residuals(gen.reg)
+```
+f. transformations
+
+```{r}
+plot(spid.gen$left.bulb^2~spid.gen$right.bulb^2)
+plot(log10(spid.gen$left.bulb)~(spid.gen$right.bulb))
+```
+2. Comparing discrete treatment effects
+  a. chi-squared
+  
+```{r}
+obs_weighted <- c(4,15,6,15,18,2)
+obs_fair <- c(10,10,10,10,10,10)
+exp <- c(.16,.17,.16,.17,.17,.17)
+chisq.test(obs_weighted, p=exp)
+chisq.test(obs_fair, p=exp)
+```
+  b. T-tests
+```{r}
+#H0- true mean is equal to 0, but you can set true mean to other values with mu=
+t.test(spid.gen$carapace.length)
+
+mean(spid.gen$carapace.length, mu=29)
+```
+```{r}
+habitat.t2<-t.test(spid.gen$carapace.length~spid.gen$habitat)
+habitat.t2
+```
+```{r}
+hab.tless <- t.test(spid.gen$left.bulb, alternative = "greater")
+hab.tless
+```
+```{r}
+hab.tgreater <- t.test(spid.gen$left.bulb, alternative = "greater")
+hab.tgreater
+```
+  
