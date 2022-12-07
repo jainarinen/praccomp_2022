@@ -958,4 +958,222 @@ hab.tless
 hab.tgreater <- t.test(spid.gen$left.bulb, alternative = "greater")
 hab.tgreater
 ```
+c. Analysis of Variance, ANOVA
+
+compares mean between three or more groups . Its like doing all possible t-test
+
+```{r}
+gen.lm <- lm(spid.gen$left.bulb~spid.gen$habitat)
+gen.lm
+summary(gen.lm)
+```
+```{r}
+anova(gen.lm)
+```
+```{r}
+gen.anova <- aov(spid.gen$left.bulb~spid.gen$habitat)
+summary(gen.anova)
+```
+
+```{r}
+gapminder.lifeexp.cont.anova<-aov(gapminder$lifeExp~gapminder$continent)
+summary(gapminder.lifeexp.cont.anova)
+```
   
+```{r}
+gapminder.tukey.two.way<- TukeyHSD(gapminder.lifeexp.cont.anova)
+gapminder.tukey.two.way
+
+```
+analysis of co-variance (ancova)
+
+
+
+
+```{r}
+plot(spid.gen$left.bulb~spid.gen$habitat)
+```
+```{r}
+gen.ancova <- lm(spid.gen$left.bulb~spid.gen$habitat*spid.gen$carapace.length)
+summary(gen.ancova)
+```
+```{r}
+gm.lifeexp_gdp.ancova<-lm(gapminder$lifeExp~gapminder$continent*gapminder$gdpPercap)
+summary(gm.lifeexp_gdp.ancova)
+```
+
+```{r}
+gm.lifeexp.cont.gdp.ancova<-aov(gapminder$lifeExp~gapminder$continent+gapminder$gdpPercap)
+```
+
+3. Principle component analysis
+```{r}
+sp.matrix <- with(spid.gen,cbind(left.bulb,right.bulb,carapace.length, leg4.length))
+sp.matrix
+```
+```{r}
+sp.pca<-princomp(sp.matrix, cor=TRUE)
+summary(sp.pca)
+loadings(sp.pca)
+```
+```{r}
+biplot(sp.pca)
+```
+
+
+```{r}
+```
+```{r}
+install.packages("ggfortify",dependencies = T)
+library(ggfortify)
+sp.pca.plot <- autoplot(sp.pca, 
+                        data = spid.gen,
+                        colour= 'habitat')
+sp.pca.plot
+```
+```{r}
+plot (1:25, rep(0.25,25), pch=1:25, col=1:25, ylim=c(0,6), cex=2, ylab="line types 1 to 6", xlab= "plotting character 1 to 25 and colors 1 to 8", main= "line types(lty), plotting characters(pch), |nand colors (col) for plot and xyplot", lab=c(25,7,2))
+
+points(1:8, rep(0.5,8), pch=20, col=1:8, cex=3)
+
+abline(h=1:6, lty=1:6, col=1:6, lwd=2)
+
+#lwd is width
+```
+```{r}
+pdf("./results/PlotCheatSheet.pdf")
+plot (1:25, rep(0.25,25), pch=1:25, col=1:25, ylim=c(0,6), cex=2, ylab="line types 1 to 6", xlab= "plotting character 1 to 25 and colors 1 to 8", main= "line types(lty), plotting characters(pch), |nand colors (col) for plot and xyplot", lab=c(25,7,2))
+
+points(1:8, rep(0.5,8), pch=20, col=1:8, cex=3)
+
+abline(h=1:6, lty=1:6, col=1:6, lwd=2)
+
+dev.off()
+```
+this wil save everything from the pdf line to dev.off() in a pdf. dev.off means developer mode off.
+
+
+##Looping and conditonals
+
+a. if then statements
+```{r}
+x <- -5
+if(x > 0 ){
+  print ("Positive Number")
+} else if (x < 0){
+  print("Negative Number")
+} else
+  print("zero")
+```
+
+```{r}
+a <- c(5,7,2,9)
+ifelse(a %% 2==0, "even", "odd")
+```
+b. for loops
+
+```{r}
+z <- c(2,5,3,9,8,11,6)
+count <- 0
+for (val in z) {
+  if (val %% 2==0) count = count +1
+}
+print(count)
+```
+c. while statement
+
+```{r}
+i <- 1
+while (i < 5) {
+  print(i)
+  i= i+1
+}
+```
+d. Interruptions
+
+```{r}
+x <- 1:5
+
+for (val in x) {
+  #print
+  if (val == 3){
+    #print(val)
+    break
+  }
+  print(va)
+}
+```
+
+```{r}
+x <- 5
+for (val in x) {
+  if (val ==3) {
+    next
+  }
+  print(val)
+}
+```
+next means "skip"
+```{r}
+x <- 1
+repeat{
+  print(x)
+  x = x+1
+  if (x ==20) {
+    break
+
+  }
+}
+```
+## Randomization and dataset management (short)
+
+```{r}
+B <- matrix(
+  c(2,4,3,1,5,87),
+  nrow=3,
+  ncol=2
+)
+
+B
+```
+```{r}
+t(B)
+```
+
+```{r}
+C <- matrix (
+  c(7,4,2),
+)
+```
+ you missed some here
+ 
+ b. randomizations
+```{r}
+#norm(n,mean,sd)
+```
+
+
+```{r}
+#sample(x, size, replace = FALSE, prob = NULL)
+```
+```{r}
+ndist <- rnorm(100, 50, 10)
+ndist
+
+mean(ndist)
+sd(ndist)
+
+hist(ndist)
+```
+```{r}
+sample(ndist, 10)
+```
+  
+```{r}
+test <- 1:100
+test
+```
+```{r}
+sample(test, 50, replace=TRUE)
+```
+
